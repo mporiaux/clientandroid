@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/idtextview2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="num client" />
+
+    <EditText
+        android:id="@+id/idnum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/idtextview3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="prenom" />
+
+    <EditText
+        android:id="@+id/edprenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/idtextview4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nom" />
+
+    <EditText
+        android:id="@+id/ednom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <Button
+        android:id="@+id/idrech1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="rechId"
+        android:text="rechercher sur id" />
+
+    <Button
+        android:id="@+id/idliste"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="liste"
+        android:text="liste" />
+
+    <Button
+        android:id="@+id/idadd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="add"
+        android:text="ajouter" />
+
+</LinearLayout>

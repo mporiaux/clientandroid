@@ -3,6 +3,7 @@ package com.condorcet.demoretrofit;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     private EditText edprenom, ednom, ednumcli;
+    private Button add;
     static final String BASE_URL = "https://demomipo.herokuapp.com/";
 
     WSInterface ws;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         ednumcli = (EditText) findViewById(R.id.idnum);
         ednom = (EditText) findViewById(R.id.ednom);
         edprenom = (EditText) findViewById(R.id.edprenom);
+        add=(Button)findViewById(R.id.idadd);
+
 
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -81,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void add(View v) {
+        add.setEnabled(false);
        String prenom = edprenom.getText().toString();
         String nom = ednom.getText().toString();
         final Client cli = new Client(0, prenom, nom);
@@ -91,13 +96,16 @@ public class MainActivity extends AppCompatActivity {
         Callback<Client> cbadd = new Callback<Client>() {
             @Override
             public void onResponse(Call<Client> call, Response<Client> response) {
+
                 if(response.isSuccessful()) {
                     int nid = 0;
                     Client cl = response.body();
                     nid = cl.getId();
                     ednumcli.setText(""+nid);
+
                  }
                 else  Toast.makeText(getApplicationContext(), "erreur lors de la création du client", Toast.LENGTH_LONG).show();
+                add.setEnabled(true);
             }
 
             @Override

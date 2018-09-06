@@ -87,8 +87,8 @@ public class Main2Activity extends AppCompatActivity {
             System.out.println("clé = "+passHeader);
             AuthTokenInfo atk=null;
 
-           // Call<AuthTokenInfo> call = ws.getToken(passHeader,"application/json","toto","papa");
-            Call<AuthTokenInfo> call = ws.getToken(passHeader,"application/json","lili","maman");
+             Call<AuthTokenInfo> call = ws.getToken(passHeader,"application/json","toto","papa");
+           // Call<AuthTokenInfo> call = ws.getToken(passHeader,"application/json","lili","maman");
             try {
                 Response<AuthTokenInfo> reptk= call.execute();
                 if(reptk.isSuccessful()) {

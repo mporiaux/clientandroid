@@ -7,9 +7,7 @@ import com.google.gson.GsonBuilder;
 
 import org.apache.commons.codec.binary.Base64;
 
-import restclient2.AuthTokenInfo;
-import restclient2.Client;
-import restclient2.WSInterfaceSec;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,12 +24,11 @@ public class SpringRestClient2 {
         String user="my-trusted-client";
         String pass="secret";
         String BASE_URL = "https://springsecuritymipo2.herokuapp.com/";
-        restclient2.WSInterfaceSec ws;
+        WSInterfaceSec ws;
 
         String base=user+":"+pass;
         final String passHeader = "Basic "+new String(Base64.encodeBase64(base.getBytes()));
-       //String passHeader="Basic "+ Base64.encodeToString(base.getBytes(),Base64);
-      //String passHeader="Basic "+ new String(Base64.encodeBase64(base.getBytes()));
+
 
         Gson gson = new GsonBuilder()
                 .setLenient()

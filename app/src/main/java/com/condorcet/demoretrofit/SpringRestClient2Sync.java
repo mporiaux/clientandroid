@@ -7,10 +7,8 @@ import com.google.gson.GsonBuilder;
 
 import org.apache.commons.codec.binary.Base64;
 
-import restclient2.AuthTokenInfo;
-import restclient2.Client;
-import restclient2.WSInterfaceSec;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -24,12 +22,11 @@ public class SpringRestClient2Sync {
         String user="my-trusted-client";
         String pass="secret";
         String BASE_URL = "https://springsecuritymipo2.herokuapp.com/";
-        restclient2.WSInterfaceSec ws;
+        WSInterfaceSec ws;
 
         String base=user+":"+pass;
         final String passHeader = "Basic "+new String(Base64.encodeBase64(base.getBytes()));
-       //String passHeader="Basic "+ Base64.encodeToString(base.getBytes(),Base64);
-      //String passHeader="Basic "+ new String(Base64.encodeBase64(base.getBytes()));
+
 
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -46,7 +43,11 @@ public class SpringRestClient2Sync {
 
         Call<AuthTokenInfo> call = ws.getToken(passHeader,"application/json","toto","papa");
         try {
-             atk = call.execute().body();
+            Response<AuthTokenInfo> reptk= call.execute();
+            if(reptk.isSuccessful()) {
+                atk = reptk.body();
+            }
+            else throw new Exception("status :"+reptk.code());
         }
         catch (Exception e){
             System.out.println("erreur "+e);
@@ -56,8 +57,12 @@ public class SpringRestClient2Sync {
 
         Call<Client> callRechid = ws.getUserById(1,atk.getAccess_token());
         try {
-            Client cli = callRechid.execute().body();
-            System.out.println(cli);
+            Response<Client> rep= callRechid.execute();
+            if(rep.isSuccessful()) {
+                Client cli = rep.body();
+                System.out.println(cli);
+            }
+            else throw new Exception("status :"+rep.code());
         }
         catch (Exception e){
             System.out.println("erreur "+e);

@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Michel on 07-02-18.
  */
 
-public class DemoConsole {
+public class SpringRestClient {
     static String BASE_URL = "https://demomipo.herokuapp.com/";
     static WSInterface ws;
     static Scanner sc = new Scanner(System.in);

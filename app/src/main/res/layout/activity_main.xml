@@ -68,4 +68,11 @@
         android:onClick="add"
         android:text="ajouter" />
 
+    <Button
+        android:id="@+id/idsec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="gosec"
+        android:text="APPLICATION SECURISEE" />
+
 </LinearLayout>
